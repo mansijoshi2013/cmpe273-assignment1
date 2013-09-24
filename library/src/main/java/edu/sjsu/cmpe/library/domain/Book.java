@@ -3,15 +3,19 @@ package edu.sjsu.cmpe.library.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.sjsu.cmpe.library.constants.StatusEnum;
 
 public class Book {
 	
     private long isbn;
-   
+    @NotEmpty
     @JsonProperty(value= "title", required=true)
     private String title;
+    @NotEmpty
     @JsonProperty(value="publication-date", required=true)
     private String publicationdate;
     @JsonProperty("language")

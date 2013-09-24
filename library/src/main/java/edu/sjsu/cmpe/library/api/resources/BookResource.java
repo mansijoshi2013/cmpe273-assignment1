@@ -1,5 +1,6 @@
 package edu.sjsu.cmpe.library.api.resources;
 
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -45,7 +46,7 @@ public class BookResource {
     @POST
     @Path("/")
     @Timed(name = "create-book")
-    public Response createBook(Book book) {
+    public Response createBook(@Valid Book book) {
     	Long isbn = LibraryData.getLibrary().createBook(book);
     	LinksDto links = new LinksDto();
     	links.setLinks(LibraryData.getLibrary().getBookLinks(isbn).getLinks());
@@ -77,7 +78,7 @@ public class BookResource {
    @POST
    @Path("/{isbn}/reviews")
    @Timed(name = "create-review")
-   public Response createReview(@PathParam("isbn") Long isbn, Review review){
+   public Response createReview(@PathParam("isbn") Long isbn,@Valid Review review){
 	   LinksDto links = LibraryData.getLibrary().createReview(isbn, review);
 	   return Response.ok(links).status(201).build();
    }

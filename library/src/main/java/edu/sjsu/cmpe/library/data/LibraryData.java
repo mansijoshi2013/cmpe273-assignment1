@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import edu.sjsu.cmpe.library.constants.StatusEnum;
 import edu.sjsu.cmpe.library.domain.Author;
 import edu.sjsu.cmpe.library.domain.Book;
@@ -58,8 +59,8 @@ public class LibraryData {
 	}
 	
 	public Book getBook(Long isbn){
-		if(books.containsKey(isbn))
-			return books.get(isbn).getBook();
+		if(books.containsKey(isbn)){
+			return books.get(isbn).getBook();}
 		
 		return null;
 	}
